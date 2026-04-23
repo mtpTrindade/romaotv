@@ -51,6 +51,7 @@ async function carregarTabela() {
       if (j === 6 && linhas[i][j + 1] && linhas[i][j + 1].includes("%")) {
         cell = cell + linhas[i][j + 1];
         j++; // pula a próxima célula
+         console.log(cell)
       }
       if (j === 6 || j === 7) cell = formatPercent(cell);
       html += `<td>${cell}</td>`;
