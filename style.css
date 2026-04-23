@@ -1,0 +1,50 @@
+table {
+  border-collapse: collapse;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  width: auto;
+}
+td {
+  border: 1px solid #E3C368;
+  padding: 6px 10px;
+  text-align: center;
+  height: 25px;
+}
+.title td {
+  font-size: 28px;
+  font-weight: bold;
+  font-style: italic;
+  background: #5F0046;
+  color: #fff;
+  height: 40px;
+}
+.header {
+  background: #5F0046;
+  color: #fff;
+  font-style: italic;
+  font-weight: bold;
+}
+.wins {
+  background: #38761d;
+  color: #fff;
+}
+.loses {
+  background: #990000;
+  color: #fff;
+}
+.row-even td {
+  background: #620093;
+  color: #fff;
+}
+.row-odd td {
+  background: #e8e7fc;
+  color: #000;
+}
+col:nth-child(1) { width: 100px; }
+col:nth-child(2) { width: 70px; }
+col:nth-child(3) { width: 50px; }
+col:nth-child(4) { width: 50px; }
+col:nth-child(5) { width: 50px; }
+col:nth-child(6) { width: 50px; }
+col:nth-child(7) { width: 70px; }
+col:nth-child(8) { width: 70px; }
