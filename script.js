@@ -64,3 +64,5 @@ async function carregarTabela() {
   console.error("Erro ao carregar tabela:", erro);
 }
 }
+
+carregarTabela();
