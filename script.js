@@ -2,14 +2,14 @@ async function carregarTabela() {
   const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTjBZIhPTAYzZzPvYY_ugJwWJeKrtxHXpNENMFhkgAxvWc_1bSldCoTZbCcOuzdvcUapxC1xtY4Ngi7/pub?gid=2107217145&single=true&output=csv"; // substitua pelo seu link CSV
   
   try {
-  const resposta = await fetch(url);
-  const texto = await resposta.text();
-
-  // Corrige vírgula decimal antes de dividir
-  const linhas = texto.trim().split("\n").map(l => {
-    const fixed = l.replace(/(\d+),(\d+)/g, "$1.$2");
-    return fixed.split(",");
-  });
+    const resposta = await fetch(url);
+    const texto = await resposta.text();
+  
+    // Corrige vírgula decimal antes de dividir
+    const linhas = texto.trim().split("\n").map(l => {
+      const fixed = l.replace(/(\d+),(\d+)/g, "$1.$2");
+      return fixed.split(",");
+    });
 
   let html = `
     <table>
@@ -55,13 +55,12 @@ async function carregarTabela() {
       if (j === 6 || j === 7) cell = formatPercent(cell);
       html += `<td>${cell}</td>`;
     }
-
     html += "</tr>";
   }
 
   html += "</table>";
   document.getElementById("ranking").innerHTML = html;
-} catch (erro) {
+ } catch (erro) {
   console.error("Erro ao carregar tabela:", erro);
 }
-
+}
