@@ -66,3 +66,5 @@ async function carregarTabela() {
 }
 
 carregarTabela();
+
+setInterval(carregarTabela, 60000);
