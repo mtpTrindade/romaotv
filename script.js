@@ -41,23 +41,23 @@ async function carregarTabela() {
       </tr>
   `;
 
-  for (let i = 5; i < linhas.length; i++) {
-    let rowClass = (i % 2 === 0) ? "row-even" : "row-odd";
-    html += `<tr class="${rowClass}">`;
+  for (let i = 4; i < linhas.length; i++) {
+  let rowClass = (i % 2 === 0) ? "row-even" : "row-odd";
+  html += `<tr class="${rowClass}">`;
 
-    for (let j = 0; j < linhas[i].length; j++) {
-      let cell = linhas[i][j];
-      // Corrige porcentagens quebradas em duas colunas
-      if (j === 6 && linhas[i][j + 1] && linhas[i][j + 1].includes("%")) {
-        cell = cell + linhas[i][j + 1];
-        j++; // pula a próxima célula
-         console.log(cell)
-      }
-      if (j === 6 || j === 7) cell = formatPercent(cell);
-      html += `<td>${cell}</td>`;
+  for (let j = 0; j < linhas[i].length; j++) {
+    let cell = linhas[i][j];
+
+    // Apenas as duas últimas colunas (índices 6 e 7) são porcentagem
+    if (j === 6 || j === 7) {
+      cell = formatPercent(cell);
     }
-    html += "</tr>";
+
+    html += `<td>${cell}</td>`;
   }
+
+  html += "</tr>";
+}
 
   html += "</table>";
   document.getElementById("ranking").innerHTML = html;
