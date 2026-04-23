@@ -46,28 +46,24 @@ async function carregarTabela() {
         </tr>
     `;
 
-    // Corpo da tabela: dados dos jogadores (linhas a partir da 5ª no CSV)
-    for (let i = 5; i < linhas.length; i++) {
-      let rowClass = (i % 2 === 0) ? "row-even" : "row-odd";
-      html += `<tr class="${rowClass}">`;
-      linhas[i].forEach((cell, j) => {
-        if (j === 6 || j === 7) cell = formatPercent(cell); // G e H em porcentagem
-        html += `<td>${cell}</td>`;
-      });
-      html += "</tr>";
+  for (let i = 4; i < linhas.length; i++) {
+  let rowClass = (i % 2 === 0) ? "row-even" : "row-odd";
+  html += `<tr class="${rowClass}">`;
+
+  linhas[i].forEach((cell, j) => {
+    if (j === 6 || j === 7) {
+      // Junta os dois pedaços em uma única string
+      cell = linhas[i][j] + (linhas[i][j+1] || "");
+      if (j === 6) { // só imprime uma vez
+        html += `<td>${formatPercent(cell)}</td>`;
+      }
+    } else if (j !== 7) { // evita imprimir duplicado
+      html += `<td>${cell}</td>`;
     }
+  });
 
-    html += "</table>";
-    document.getElementById("ranking").innerHTML = html;
-  } catch (erro) {
-    console.error("Erro ao carregar tabela:", erro);
-  }
+  html += "</tr>";
 }
 
-function formatPercent(value) {
-  if (value.includes("%")) return value;
-  const num = parseFloat(value);
-  return isNaN(num) ? value : num.toFixed(2).replace(".", ",") + "%";
-}
 
 carregarTabela();
