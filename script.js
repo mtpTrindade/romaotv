@@ -66,10 +66,10 @@ async function carregarTabela() {
 }
     html += "</table>";
     document.getElementById("ranking").innerHTML = html;
-  } catch (erro) {
+   catch (erro) {
     console.error("Erro ao carregar tabela:", erro);
   }
-}
+
 
 
 carregarTabela();
