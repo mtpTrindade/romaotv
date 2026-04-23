@@ -46,7 +46,7 @@ async function carregarTabela() {
         </tr>
     `;
 
-  for (let i = 4; i < linhas.length; i++) {
+ for (let i = 4; i < linhas.length; i++) {
   let rowClass = (i % 2 === 0) ? "row-even" : "row-odd";
   html += `<tr class="${rowClass}">`;
 
@@ -63,6 +63,12 @@ async function carregarTabela() {
   });
 
   html += "</tr>";
+}
+    html += "</table>";
+    document.getElementById("ranking").innerHTML = html;
+  } catch (erro) {
+    console.error("Erro ao carregar tabela:", erro);
+  }
 }
 
 
