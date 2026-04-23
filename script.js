@@ -1,5 +1,5 @@
 async function carregarTabela() {
-  const url = "https://script.google.com/macros/s/SEU_ID/exec"; // substitua pelo seu link /exec
+  const url = "https://script.google.com/macros/s/AKfycbxPFrWFTKj9EOXv8m7KsLf_omkQanoiHB2Yiw7yI5dHMZ9JkSHg0coti1z0wsvBRXIfsg/exec"; // substitua pelo seu link /exec
 
   try {
     const resposta = await fetch(url);
