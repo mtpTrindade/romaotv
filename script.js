@@ -1,10 +1,15 @@
 async function carregarTabela() {
   const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTjBZIhPTAYzZzPvYY_ugJwWJeKrtxHXpNENMFhkgAxvWc_1bSldCoTZbCcOuzdvcUapxC1xtY4Ngi7/pub?gid=2107217145&single=true&output=csv"; // substitua pelo seu link CSV
-
+  
   try {
     const resposta = await fetch(url);
     const texto = await resposta.text();
-    const linhas = texto.trim().split("\n").map(l => l.split(","));
+
+    // Corrige vírgula decimal antes de dividir
+    const linhas = texto.trim().split("\n").map(l => {
+      const fixed = l.replace(/(\d+),(\d+)/g, "$1.$2");
+      return fixed.split(",");
+    });
 
     let html = `
       <table>
@@ -18,7 +23,7 @@ async function carregarTabela() {
           <col style="width:70px">
           <col style="width:70px">
         </colgroup>
-        <!-- Título mesclado em duas linhas até H -->
+        <!-- Título mesclado em duas linhas -->
         <tr class="title"><td colspan="8" rowspan="2">RANKING</td></tr>
         <tr></tr>
 
